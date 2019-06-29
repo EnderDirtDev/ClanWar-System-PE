@@ -704,102 +704,6 @@ class BedWars extends PluginBase implements Listener {
 
         }
 
-        if ($command->getName() === "Start") {
-
-            $pg = new Config("/home/ClanWars/players/" . $sender->getName() . ".yml", Config::YAML);
-            if ($pg->get("NickP") === true) {
-
-                $config = $this->getConfig();
-                if ($config->get("Ingame") === false) {
-
-                    if ($config->get("WaitTime") <= 5) {
-
-                        $sender->sendMessage($this->prefix . Color::GRAY . "Das Spiel startet schon!");
-
-                    } else {
-
-                        $config->set("WaitTime", 5);
-                        $config->save();
-
-                    }
-
-                } else {
-
-                    $sender->sendMessage($this->prefix . Color::GRAY . "Die Runde hat schon begonnen!");
-
-                }
-
-            } else {
-
-                $sender->sendMessage($this->prefix . Color::GRAY . "Du hast keine Berechtigung fuer diesen befehl!");
-
-            }
-
-        }
-		
-		if ($command->getName() === "Stats") {
-			
-			if (isset($args[0])) {
-				
-				if (is_file("/home/ClanWars/BedWars/players/" . $args[0] . ".yml")) {
-					
-					$pf = new Config("/home/ClanWars/BedWars/players/" . $args[0] . ".yml", Config::YAML);
-					$kills = $pf->get("Kills");
-				    $deaths = $pf->get("Deaths");
-				    $wins = $pf->get("Wins");
-					if ($kills === 0) {
-						
-						$kd = $deaths;
-						
-					} else if ($deaths === 0) {
-						
-						$kd = $kills;
-						
-					} else {
-						
-						$kd = $kills/$deaths;
-						
-			        }
-				
-				    $sender->sendMessage(Color::GRAY . "Seine/Ihre Stats für " . $this->prefix);
-				    $sender->sendMessage(Color::AQUA . "Wins: " . Color::GRAY . $wins);
-				    $sender->sendMessage(Color::AQUA . "Kills: " . Color::GRAY . $kills);
-				    $sender->sendMessage(Color::AQUA . "Deaths: " . Color::GRAY . $deaths);
-				    $sender->sendMessage(Color::AQUA . "K/D: " . Color::GRAY . $kd);
-					
-				}
-				
-			} else {
-				
-				$pf = new Config("/home/ClanWars/BedWars/players/" . $sender->getName() . ".yml", Config::YAML);
-				$kills = $pf->get("Kills");
-				$deaths = $pf->get("Deaths");
-				$wins = $pf->get("Wins");
-				if ($kills === 0) {
-						
-					$kd = $deaths;
-						
-				} else if ($deaths === 0) {
-						
-					$kd = $kills;
-						
-				} else {
-						
-					$kd = $kills/$deaths;
-						
-			    }
-				
-				$sender->sendMessage(Color::GRAY . "Deine Stats für " . $this->prefix);
-				$sender->sendMessage(Color::AQUA . "Wins: " . Color::GRAY . $wins);
-				$sender->sendMessage(Color::AQUA . "Kills: " . Color::GRAY . $kills);
-				$sender->sendMessage(Color::AQUA . "Deaths: " . Color::GRAY . $deaths);
-				$sender->sendMessage(Color::AQUA . "K/D: " . Color::GRAY . $kd);
-				
-			}
-            
-
-        }
-
         return true;
 
     }
@@ -1684,10 +1588,78 @@ class GameSender extends Task
                     $clan->set("ClanWar", false);
                     $clan->save();
                     $cwfile = new Config("/home/ClanWars/ClanWars.yml", Config::YAML);
-                    $cwfile->set("ClanWar1Blau", "");
-                    $cwfile->set("ClanWar1Rot", "");
-                    $cwfile->set("ClanWar1", false);
-                    $cwfile->save();
+                    if ($cwfile->get("ClanWar1Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar1Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    }
+
                     $this->plugin->players = 0;
                     $levelname = $config->get("Arena");
                     $lev = $this->plugin->getServer()->getLevelByName($levelname);
@@ -1781,10 +1753,78 @@ class GameSender extends Task
                         $clan->set("ClanWar", false);
                         $clan->save();
                         $cwfile = new Config("/home/ClanWars/ClanWars.yml", Config::YAML);
-                        $cwfile->set("ClanWar1Blau", "");
-                        $cwfile->set("ClanWar1Rot", "");
-                        $cwfile->set("ClanWar1", false);
-                        $cwfile->save();
+                        if ($cwfile->get("ClanWar1Blau") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar1Blau", "");
+                            $cwfile->set("ClanWar1Rot", "");
+                            $cwfile->set("ClanWar1", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar1Rot") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar1Blau", "");
+                            $cwfile->set("ClanWar1Rot", "");
+                            $cwfile->set("ClanWar1", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar2Blau") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar2Blau", "");
+                            $cwfile->set("ClanWar2Rot", "");
+                            $cwfile->set("ClanWar2", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar2Rot") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar2Blau", "");
+                            $cwfile->set("ClanWar2Rot", "");
+                            $cwfile->set("ClanWar2", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar3Blau") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar3Blau", "");
+                            $cwfile->set("ClanWar3Rot", "");
+                            $cwfile->set("ClanWar3", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar3Rot") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar3Blau", "");
+                            $cwfile->set("ClanWar3Rot", "");
+                            $cwfile->set("ClanWar3", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar4Blau") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar4Blau", "");
+                            $cwfile->set("ClanWar4Rot", "");
+                            $cwfile->set("ClanWar4", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar4Rot") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar4Blau", "");
+                            $cwfile->set("ClanWar4Rot", "");
+                            $cwfile->set("ClanWar4", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar5Blau") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar5Blau", "");
+                            $cwfile->set("ClanWar5Rot", "");
+                            $cwfile->set("ClanWar5", false);
+                            $cwfile->save();
+
+                        } else if ($cwfile->get("ClanWar5Rot") === $sf->get("Clan")) {
+
+                            $cwfile->set("ClanWar5Blau", "");
+                            $cwfile->set("ClanWar5Rot", "");
+                            $cwfile->set("ClanWar5", false);
+                            $cwfile->save();
+
+                        }
+
                         $this->plugin->players = 0;
                         $levelname = $config->get("Arena");
                         $lev = $this->plugin->getServer()->getLevelByName($levelname);
@@ -1844,10 +1884,78 @@ class GameSender extends Task
                     $clan->set("ClanWar", false);
                     $clan->save();
                     $cwfile = new Config("/home/ClanWars/ClanWars.yml", Config::YAML);
-                    $cwfile->set("ClanWar1Blau", "");
-                    $cwfile->set("ClanWar1Rot", "");
-                    $cwfile->set("ClanWar1", false);
-                    $cwfile->save();
+                    if ($cwfile->get("ClanWar1Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar1Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    }
+
                     $this->plugin->players = 0;
                     $levelname = $config->get("Arena");
                     $lev = $this->plugin->getServer()->getLevelByName($levelname);
@@ -1905,10 +2013,78 @@ class GameSender extends Task
                     $clan->set("ClanWar", false);
                     $clan->save();
                     $cwfile = new Config("/home/ClanWars/ClanWars.yml", Config::YAML);
-                    $cwfile->set("ClanWar1Blau", "");
-                    $cwfile->set("ClanWar1Rot", "");
-                    $cwfile->set("ClanWar1", false);
-                    $cwfile->save();
+                    if ($cwfile->get("ClanWar1Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar1Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar1Blau", "");
+                        $cwfile->set("ClanWar1Rot", "");
+                        $cwfile->set("ClanWar1", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar2Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar2Blau", "");
+                        $cwfile->set("ClanWar2Rot", "");
+                        $cwfile->set("ClanWar2", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar3Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar3Blau", "");
+                        $cwfile->set("ClanWar3Rot", "");
+                        $cwfile->set("ClanWar3", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar4Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar4Blau", "");
+                        $cwfile->set("ClanWar4Rot", "");
+                        $cwfile->set("ClanWar4", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Blau") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    } else if ($cwfile->get("ClanWar5Rot") === $sf->get("Clan")) {
+
+                        $cwfile->set("ClanWar5Blau", "");
+                        $cwfile->set("ClanWar5Rot", "");
+                        $cwfile->set("ClanWar5", false);
+                        $cwfile->save();
+
+                    }
+
                     $this->plugin->players = 0;
                     $levelname = $config->get("Arena");
                     $lev = $this->plugin->getServer()->getLevelByName($levelname);

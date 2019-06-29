@@ -72,7 +72,14 @@ class ClanWar extends PluginBase implements Listener {
 
             $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
             $cwfig->set("IP", "5.555.55.55");
+            $cwfig->set("Port-1", 1);
+            $cwfig->set("Port-2", 2);
+            $cwfig->set("Port-3", 3);
+            $cwfig->set("Port-4", 4);
+            $cwfig->set("Port-5", 5);
             $cwfig->save();
+
+            $this->getLogger()->info($this->prefix . Color::GREEN . "Es wurde ein Ordner im /home/ Verzeichnis erstellt!");
 
         }
 
@@ -800,6 +807,8 @@ class ClanWar extends PluginBase implements Listener {
                             $cwfile = new Config("/home/ClanWars/ClanWars.yml", Config::YAML);
                             if ($cwfile->get("ClanWar1") === false) {
 
+                                $cwfile->set("ClanWar1", true);
+                                $cwfile->save();
                                 if ($cwfile->get("ClanWar1Blau") === "") {
 
                                     $cwfile->set("ClanWar1Blau", $pf->get("Clan"));
@@ -928,7 +937,535 @@ class ClanWar extends PluginBase implements Listener {
 
                                 }
 
-                            }
+                            } else if ($cwfile->get("ClanWar2") === false) {
+
+                                $cwfile->set("ClanWar2", true);
+                                $cwfile->save();
+                                if ($cwfile->get("ClanWar2Blau") === "") {
+
+                                    $cwfile->set("ClanWar2Blau", $pf->get("Clan"));
+                                    $cwfile->save();
+                                    $clan->set("ClanWar", true);
+                                    $clan->save();
+                                    $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                    $player->getInventory()->clearAll();
+
+                                    $cw = Item::get(345, 0, 1);
+                                    $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                    $player->getInventory()->setItem(4, $cw);
+
+                                } else {
+
+                                    if ($cwfile->get("ClanWar2Rot") === "") {
+
+                                        $cwfile->set("ClanWar2Rot", $pf->get("Clan"));
+                                        $cwfile->set("ClanWar", true);
+                                        $cwfile->save();
+                                        $clan->set("ClanWar", true);
+                                        $clan->save();
+                                        $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                        $player->getInventory()->clearAll();
+
+                                        $cw = Item::get(345, 0, 1);
+                                        $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                        $player->getInventory()->setItem(4, $cw);
+
+                                        $cr1 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember1"));
+                                        if (!$cr1 == null) {
+
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr2 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember2"));
+                                        if (!$cr2 == null) {
+
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr3 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember3"));
+                                        if (!$cr3 == null) {
+
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr4 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember4"));
+                                        if (!$cr4 == null) {
+
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $clan2 = new Config("/home/ClanWars/Clans/" . $cwfile->get("ClanWar1Blau") . ".yml", Config::YAML);
+                                        $cr5 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember1"));
+                                        if (!$cr5 == null) {
+
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr6 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember2"));
+                                        if (!$cr6 == null) {
+
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr7 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember3"));
+                                        if (!$cr7 == null) {
+
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr8 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember4"));
+                                        if (!$cr8 == null) {
+
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar2");
+                                            $sf->save();
+
+                                        }
+
+                                    } else {
+
+                                        $player->sendMessage($this->prefix . Color::RED . "FEHLER CODE #0001");
+
+                                    }
+
+                                }
+
+                            } else if ($cwfile->get("ClanWar3") === false) {
+
+                                $cwfile->set("ClanWar3", true);
+                                $cwfile->save();
+                                if ($cwfile->get("ClanWar3Blau") === "") {
+
+                                    $cwfile->set("ClanWar3Blau", $pf->get("Clan"));
+                                    $cwfile->save();
+                                    $clan->set("ClanWar", true);
+                                    $clan->save();
+                                    $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                    $player->getInventory()->clearAll();
+
+                                    $cw = Item::get(345, 0, 1);
+                                    $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                    $player->getInventory()->setItem(4, $cw);
+
+                                } else {
+
+                                    if ($cwfile->get("ClanWar3Rot") === "") {
+
+                                        $cwfile->set("ClanWar3Rot", $pf->get("Clan"));
+                                        $cwfile->set("ClanWar", true);
+                                        $cwfile->save();
+                                        $clan->set("ClanWar", true);
+                                        $clan->save();
+                                        $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                        $player->getInventory()->clearAll();
+
+                                        $cw = Item::get(345, 0, 1);
+                                        $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                        $player->getInventory()->setItem(4, $cw);
+
+                                        $cr1 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember1"));
+                                        if (!$cr1 == null) {
+
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr2 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember2"));
+                                        if (!$cr2 == null) {
+
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr3 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember3"));
+                                        if (!$cr3 == null) {
+
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr4 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember4"));
+                                        if (!$cr4 == null) {
+
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $clan2 = new Config("/home/ClanWars/Clans/" . $cwfile->get("ClanWar1Blau") . ".yml", Config::YAML);
+                                        $cr5 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember1"));
+                                        if (!$cr5 == null) {
+
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr6 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember2"));
+                                        if (!$cr6 == null) {
+
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr7 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember3"));
+                                        if (!$cr7 == null) {
+
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr8 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember4"));
+                                        if (!$cr8 == null) {
+
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar3");
+                                            $sf->save();
+
+                                        }
+
+                                    } else {
+
+                                        $player->sendMessage($this->prefix . Color::RED . "FEHLER CODE #0001");
+
+                                    }
+
+                                }
+
+                            } else if ($cwfile->get("ClanWar4") === false) {
+
+                                $cwfile->set("ClanWar4", true);
+                                $cwfile->save();
+                                if ($cwfile->get("ClanWar4Blau") === "") {
+
+                                    $cwfile->set("ClanWar4Blau", $pf->get("Clan"));
+                                    $cwfile->save();
+                                    $clan->set("ClanWar", true);
+                                    $clan->save();
+                                    $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                    $player->getInventory()->clearAll();
+
+                                    $cw = Item::get(345, 0, 1);
+                                    $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                    $player->getInventory()->setItem(4, $cw);
+
+                                } else {
+
+                                    if ($cwfile->get("ClanWar4Rot") === "") {
+
+                                        $cwfile->set("ClanWar4Rot", $pf->get("Clan"));
+                                        $cwfile->set("ClanWar", true);
+                                        $cwfile->save();
+                                        $clan->set("ClanWar", true);
+                                        $clan->save();
+                                        $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                        $player->getInventory()->clearAll();
+
+                                        $cw = Item::get(345, 0, 1);
+                                        $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                        $player->getInventory()->setItem(4, $cw);
+
+                                        $cr1 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember1"));
+                                        if (!$cr1 == null) {
+
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr2 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember2"));
+                                        if (!$cr2 == null) {
+
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr3 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember3"));
+                                        if (!$cr3 == null) {
+
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr4 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember4"));
+                                        if (!$cr4 == null) {
+
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $clan2 = new Config("/home/ClanWars/Clans/" . $cwfile->get("ClanWar1Blau") . ".yml", Config::YAML);
+                                        $cr5 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember1"));
+                                        if (!$cr5 == null) {
+
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr6 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember2"));
+                                        if (!$cr6 == null) {
+
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr7 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember3"));
+                                        if (!$cr7 == null) {
+
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr8 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember4"));
+                                        if (!$cr8 == null) {
+
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar4");
+                                            $sf->save();
+
+                                        }
+
+                                    } else {
+
+                                        $player->sendMessage($this->prefix . Color::RED . "FEHLER CODE #0001");
+
+                                    }
+
+                                }
+
+                            } else if ($cwfile->get("ClanWar5") === false) {
+
+                                $cwfile->set("ClanWar5", true);
+                                $cwfile->save();
+                                if ($cwfile->get("ClanWar5Blau") === "") {
+
+                                    $cwfile->set("ClanWar5Blau", $pf->get("Clan"));
+                                    $cwfile->save();
+                                    $clan->set("ClanWar", true);
+                                    $clan->save();
+                                    $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                    $player->getInventory()->clearAll();
+
+                                    $cw = Item::get(345, 0, 1);
+                                    $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                    $player->getInventory()->setItem(4, $cw);
+
+                                } else {
+
+                                    if ($cwfile->get("ClanWar5Rot") === "") {
+
+                                        $cwfile->set("ClanWar5Rot", $pf->get("Clan"));
+                                        $cwfile->set("ClanWar", true);
+                                        $cwfile->save();
+                                        $clan->set("ClanWar", true);
+                                        $clan->save();
+                                        $player->sendMessage($this->prefix . Color::GREEN . "Du bist erfolgreich der Queue beigetreten!");
+
+                                        $player->getInventory()->clearAll();
+
+                                        $cw = Item::get(345, 0, 1);
+                                        $cw->setCustomName(Color::RED . "ClanWar Queue");
+                                        $player->getInventory()->setItem(4, $cw);
+
+                                        $cr1 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember1"));
+                                        if (!$cr1 == null) {
+
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr1->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr2 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember2"));
+                                        if (!$cr2 == null) {
+
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr2->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr3 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember3"));
+                                        if (!$cr3 == null) {
+
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr3->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr4 = $this->getServer()->getPlayerExact($clan->get("ClanWarMember4"));
+                                        if (!$cr4 == null) {
+
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr4->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $clan2 = new Config("/home/ClanWars/Clans/" . $cwfile->get("ClanWar1Blau") . ".yml", Config::YAML);
+                                        $cr5 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember1"));
+                                        if (!$cr5 == null) {
+
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr5->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember1") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr6 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember2"));
+                                        if (!$cr6 == null) {
+
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr6->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember2") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr7 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember3"));
+                                        if (!$cr7 == null) {
+
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr7->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember3") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                        $cr8 = $this->getServer()->getPlayerExact($clan2->get("ClanWarMember4"));
+                                        if (!$cr8 == null) {
+
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Es wurde ein gegner Clan gefunden!");
+                                            $cr8->sendMessage($this->prefix . Color::GREEN . "Du wirst in kuerze transferiert!");
+                                            $sf = new Config("/home/ClanWars/players/" . $clan2->get("ClanWarMember4") . ".yml", Config::YAML);
+                                            $sf->set("Transfer", "ClanWar5");
+                                            $sf->save();
+
+                                        }
+
+                                    } else {
+
+                                        $player->sendMessage($this->prefix . Color::RED . "FEHLER CODE #0001");
+
+                                    }
+
+                                }
+
+                            } //Hier
 
                         } else {
 
@@ -1051,12 +1588,65 @@ class ClanWarTask extends Task
                     $clan->set("ClanWarMember4", "");
                     $clan->set("ClanWarMember", 0);
                     $clan->save();
-                    $player->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
-                    $pf = new Config("/home/ClanWars/players/" . $player . ".yml", Config::YAML);
-                    $pf->set("Server", 11);
-                    $pf->save();
+                    $player->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
                     $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
-                    $player->transfer($cwfig->get("IP"), $pf->get("Server"));
+                    $player->transfer($cwfig->get("IP"), $cwfig->get("Port-1"));
+
+                } else if ($pf->get("Transfer") === "ClanWar2") {
+
+                    $pf->set("Transfer", "");
+                    $pf->save();
+                    $clan->set("ClanWarMember1", "");
+                    $clan->set("ClanWarMember2", "");
+                    $clan->set("ClanWarMember3", "");
+                    $clan->set("ClanWarMember4", "");
+                    $clan->set("ClanWarMember", 0);
+                    $clan->save();
+                    $player->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
+                    $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
+                    $player->transfer($cwfig->get("IP"), $cwfig->get("Port-2"));
+
+                } else if ($pf->get("Transfer") === "ClanWar3") {
+
+                    $pf->set("Transfer", "");
+                    $pf->save();
+                    $clan->set("ClanWarMember1", "");
+                    $clan->set("ClanWarMember2", "");
+                    $clan->set("ClanWarMember3", "");
+                    $clan->set("ClanWarMember4", "");
+                    $clan->set("ClanWarMember", 0);
+                    $clan->save();
+                    $player->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
+                    $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
+                    $player->transfer($cwfig->get("IP"), $cwfig->get("Port-3"));
+
+                } else if ($pf->get("Transfer") === "ClanWar4") {
+
+                    $pf->set("Transfer", "");
+                    $pf->save();
+                    $clan->set("ClanWarMember1", "");
+                    $clan->set("ClanWarMember2", "");
+                    $clan->set("ClanWarMember3", "");
+                    $clan->set("ClanWarMember4", "");
+                    $clan->set("ClanWarMember", 0);
+                    $clan->save();
+                    $player->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
+                    $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
+                    $player->transfer($cwfig->get("IP"), $cwfig->get("Port-4"));
+
+                } else if ($pf->get("Transfer") === "ClanWar5") {
+
+                    $pf->set("Transfer", "");
+                    $pf->save();
+                    $clan->set("ClanWarMember1", "");
+                    $clan->set("ClanWarMember2", "");
+                    $clan->set("ClanWarMember3", "");
+                    $clan->set("ClanWarMember4", "");
+                    $clan->set("ClanWarMember", 0);
+                    $clan->save();
+                    $player->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Du wirst nun Transferiert!");
+                    $cwfig = new Config("/home/ClanWars/config.yml", Config::YAML);
+                    $player->transfer($cwfig->get("IP"), $cwfig->get("Port-5"));
 
                 }
 

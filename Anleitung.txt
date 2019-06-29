@@ -10,7 +10,7 @@ Link:                                                  |
 
 2. Starte den ClanWar-Lobby Server.
 
-3. Trage nun in dem plugins-data Ordner bei ClanWar in der config.yml die Zahlen IP deines Servers ein so wie im Beispiel.
+3. Trage nun in dem /home/ Ordner bei ClanWars in der config.yml die Zahlen IP deines Servers ein so wie im Beispiel.
 
 4. Installiere den ClanWar-BedWars-Server Ordner auf den 5 ClanWar Servern in den Plugins Ordnern.
 
@@ -18,7 +18,9 @@ Link:                                                  |
 
 6. So machst du dann auch das mit den restlichen 4 ClanWar-BedWars-Servern.
 
-7. Stelle bei den 5 ClanWar-BedWars-Servern nun in den Server-Propereties jeweils die Ports: 10, 11, 12, 13, 14 ein.
+7. Stelle bei den 5 ClanWar-BedWars-Servern nun in den Server-Propereties jeweils die Ports ein und trage diese in den ClanWars config.yml die Ports von den jeweiligen Server ein.
 
 8. Nun ist das Setup fertig!
+
+Wenn ein Fehler angezeigt wird das ein Ordner nicht laden konnte, dann Starte den Server neu!
 

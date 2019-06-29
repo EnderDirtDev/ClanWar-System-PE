@@ -805,12 +805,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Owner");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -819,12 +819,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Admin");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -833,12 +833,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Builder");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -847,12 +847,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Moderator");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -861,12 +861,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Supporter");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -875,12 +875,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "YouTuber");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -889,12 +889,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "VIP+");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -903,12 +903,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "VIP");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -917,12 +917,12 @@ class Clan extends PluginBase implements Listener
                                 $pf = new Config("/home/ClanWars/players/" . $args[0] . ".yml", Config::YAML);
                                 $pf->set("Group", "Default");
                                 $pf->save();
-                                $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::DARK_PURPLE . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
+                                $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Die Gruppe von " . Color::YELLOW . $args[0] . Color::GREEN . " wurde erfolgreich getauscht!");
                                 $v = $this->getServer()->getPlayerExact($args[0]);
                                 if (!$v == null) {
 
                                     $this->setGroup($v);
-                                    $v->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
+                                    $v->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GREEN . "Deine Gruppe wurde getauscht!");
 
                                 }
 
@@ -932,13 +932,13 @@ class Clan extends PluginBase implements Listener
 
                     } else {
 
-                        $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::RED . "Diesen Spieler gibt es nicht!");
+                        $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::RED . "Diesen Spieler gibt es nicht!");
 
                     }
 
                 } else {
 
-                    $sender->sendMessage(Color::DARK_PURPLE . "EnderCube" . Color::DARK_GRAY . " : " . Color::GRAY . "/group <PlayerName> <owner, admin, builder, moderator, supporter, youtuber, vip+, vip, default>");
+                    $sender->sendMessage(Color::YELLOW . "SERVER" . Color::DARK_GRAY . " : " . Color::GRAY . "/group <PlayerName> <owner, admin, builder, moderator, supporter, youtuber, vip+, vip, default>");
 
                 }
 

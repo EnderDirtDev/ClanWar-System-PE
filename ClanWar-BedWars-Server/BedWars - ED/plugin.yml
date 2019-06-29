@@ -7,9 +7,3 @@ commands:
   BedWars:
     description: BedWars Command
     aliases: [bw]
-  Start:
-    description: Start Command
-    aliases: [start]
-  Stats:
-    description: Stats Command
-    aliases: [stats]
