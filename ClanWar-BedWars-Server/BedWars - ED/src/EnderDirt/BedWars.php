@@ -688,7 +688,7 @@ class BedWars extends PluginBase implements Listener {
                                     $config = $this->getConfig();
                                     $config->set("Arena", $args[1]);
                                     $config->save();
-                                    $sender->sendMessage($this->prefix . Color::GRAY . "Du hast die Arena " . Color::AQUA . $args[1] . Color::GRAY . " ausgewaehlt. Jetzt musst du den Spawn fuer das Blaue Team tippen");
+                                    $sender->sendMessage($this->prefix . Color::GRAY . "Du hast die Arena " . Color::AQUA . $args[1] . Color::GRAY . " ausgewaehlt. Jetzt musst du den Spawn fuer das blaue Team tippen");
                                     $this->mode++;
                                     return true;
 
@@ -779,7 +779,7 @@ class BedWars extends PluginBase implements Listener {
             $af->set("s1z", $block->getZ() + 0.5);
             $af->save();
 
-            $player->sendMessage($this->prefix . "Jetzt den roten Spawn");
+            $player->sendMessage($this->prefix . "Jetzt den roten Team Spawn");
             $this->mode++;
 
         } else if ($this->mode === 2 && $player->isOp()) {
